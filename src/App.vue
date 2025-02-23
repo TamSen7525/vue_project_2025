@@ -1,11 +1,15 @@
 <template>
-  <div>
-    <h1>Hello World!</h1>
-  </div>
+  <div>{{ name }}</div>
+  <div>{{ surn }}</div>
 </template>
 
 <script>
 export default {
-  name: 'App',
+  data() {
+	return {
+		name: 'john',
+		surn: 'smit',
+	}
 }
+  }
 </script>
