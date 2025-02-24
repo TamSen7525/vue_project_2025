@@ -1,9 +1,12 @@
 <template>
   <div>
-    <p>{{ text }}</p>
-    <button @click="change">Изменить текст</button>
-    <button @click="changeToFirst">Первый текст</button>
-    <button @click="changeToSecond">Второй текст</button>
+    <h1>Task 1</h1>
+    <p>Cost: {{ cost }}</p>
+    <p>Amount: {{ amount }}</p>
+    <p>Total Price: {{ price }}</p>
+    
+    <h1>Task 2</h1>
+    <button @click="changeCost">Change Cost</button>
   </div>
 </template>
 
@@ -11,30 +14,33 @@
 export default {
   data() {
     return {
-      text: 'xxx'
-    };
+      cost: 10,
+      amount: 5
+    }
+  },
+  computed: {
+    price() {
+      return this.cost * this.amount;
+    }
   },
   methods: {
-    change() {
-      this.text = 'yyy';
-    },
-    changeToFirst() {
-      this.text = 'Первый';
-    },
-    changeToSecond() {
-      this.text = 'Второй';
+    changeCost() {
+      this.cost = 20;
     }
   }
-};
+}
 </script>
 
-<style>
-p {
-  font-size: 18px;
-  margin-bottom: 10px;
+<style scoped>
+div {
+  margin-bottom: 20px;
 }
-button {
-  margin-right: 10px;
-  padding: 5px 10px;
+
+h1 {
+  margin: 0 0 10px 0;
+}
+
+p {
+  margin: 5px 0;
 }
 </style>
