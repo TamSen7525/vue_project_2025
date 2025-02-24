@@ -1,40 +1,19 @@
 <template>
   <div>
     <h1>Task 1</h1>
-    <button @click="showDay">Show Day by Number</button>
-    <h1>Task 2</h1>
-    <button @click="showCurrentDay">Show Current Day</button>
+    <button @click="showSquare(2)">Square of 2</button>
+    <button @click="showSquare(3)">Square of 3</button>
   </div>
 </template>
 
 <script>
 export default {
   data() {
-    return {
-      dayNumber: 3
-    }
+    return {}
   },
   methods: {
-    showDay() {
-      const dayName = this.getDayName(this.dayNumber);
-      alert(dayName);
-    },
-    showCurrentDay() {
-      const today = new Date().getDay();
-      const dayName = this.getDayName(today);
-      alert(dayName);
-    },
-    getDayName(number) {
-      const days = [
-        'Воскресенье',
-        'Понедельник',
-        'Вторник',
-        'Среда',
-        'Четверг',
-        'Пятница',
-        'Суббота'
-      ];
-      return days[number] || 'Неверный номер дня';
+    showSquare(number) {
+      alert(number * number);
     }
   }
 }
