@@ -1,30 +1,38 @@
 <template>
   <div>
-    <!-- Task 1 -->
     <h1>Task 1</h1>
-    <button @click="showSum">Show Sum</button>
-
+    <button @click="showCurrentDay">Show Current Day</button>
   </div>
 </template>
 
 <script>
 export default {
   data() {
-	return {
-		num1: 1,
-		num2: 2,
-	}
+    return {}
   },
   methods: {
-    showSum() {
-      alert(this.num1 + this.num2);
+    showCurrentDay() {
+      const today = new Date().getDay();
+      const dayName = this.getDayName(today);
+      alert(dayName);
+    },
+    getDayName(number) {
+      const days = [
+        'Воскресенье',
+        'Понедельник',
+        'Вторник',
+        'Среда',
+        'Четверг',
+        'Пятница',
+        'Суббота'
+      ];
+      return days[number] || 'Неверный номер дня';
     }
   }
 }
 </script>
 
 <style scoped>
-
 div {
   margin-bottom: 20px;
 }
