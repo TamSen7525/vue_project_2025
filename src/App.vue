@@ -1,9 +1,12 @@
 <template>
-  <!-- Task 1 -->
   <div>
+    <!-- Task 1 -->
     <h1>Task 1</h1>
     <button @click="showDate">Show Date</button>
 
+    <!-- Task 2 -->
+    <h1>Task 2</h1>
+    <button @mouseenter="showDate">Hover over me</button>
   </div>
 </template>
 
@@ -13,8 +16,8 @@ export default {
     showDate() {
       alert(new Date());
     }
-  } 
-}
+  }
+};
 </script>
 
 <style scoped>
