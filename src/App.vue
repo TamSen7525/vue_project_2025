@@ -1,46 +1,34 @@
 <template>
   <div>
     <h1>Task 1</h1>
-    <p>Cost: {{ cost }}</p>
-    <p>Amount: {{ amount }}</p>
-    <p>Total Price: {{ price }}</p>
-    
+    <a href="https://example.com" @click.prevent="handleClick">Click me</a>
+
     <h1>Task 2</h1>
-    <button @click="changeCost">Change Cost</button>
+    <button @click.once="handleClickOnce">Click me once</button>
   </div>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      cost: 10,
-      amount: 5
-    }
-  },
-  computed: {
-    price() {
-      return this.cost * this.amount;
-    }
-  },
   methods: {
-    changeCost() {
-      this.cost = 20;
+    handleClick() {
+      alert('Link clicked!');
+    },
+    handleClickOnce() {
+      alert('Button clicked once!');
     }
   }
-}
+};
 </script>
 
 <style scoped>
-div {
-  margin-bottom: 20px;
-}
-
 h1 {
-  margin: 0 0 10px 0;
+  font-size: 24px;
+  margin-bottom: 10px;
 }
-
-p {
-  margin: 5px 0;
+button {
+  font-size: 18px;
+  padding: 10px;
+  margin-top: 10px;
 }
 </style>
