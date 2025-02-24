@@ -1,34 +1,40 @@
 <template>
   <div>
-    <h1>Task 1</h1>
-    <button @click="showSquare(2)">Square of 2</button>
-    <button @click="showSquare(3)">Square of 3</button>
+    <p>{{ text }}</p>
+    <button @click="change">Изменить текст</button>
+    <button @click="changeToFirst">Первый текст</button>
+    <button @click="changeToSecond">Второй текст</button>
   </div>
 </template>
 
 <script>
 export default {
   data() {
-    return {}
+    return {
+      text: 'xxx'
+    };
   },
   methods: {
-    showSquare(number) {
-      alert(number * number);
+    change() {
+      this.text = 'yyy';
+    },
+    changeToFirst() {
+      this.text = 'Первый';
+    },
+    changeToSecond() {
+      this.text = 'Второй';
     }
   }
-}
+};
 </script>
 
-<style scoped>
-div {
-  margin-bottom: 20px;
-}
-
-h1 {
-  margin: 0 0 10px 0;
-}
-
+<style>
 p {
-  margin: 5px 0;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+button {
+  margin-right: 10px;
+  padding: 5px 10px;
 }
 </style>
