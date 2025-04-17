@@ -1,18 +1,18 @@
 <template>
   <div>
     <h1>Task 1</h1>
-    <input type="text" v-model="inputText" @keyup.enter="submitText" />
-    <p>{{ displayedText }}</p>
+    <input v-model="newItem" />
+    <button @click="addItem">Add</button>
+    <ul>
+      <li v-for="(item, index) in items" :key="index">{{ item }}</li>
+    </ul>
 
     <h1>Task 2</h1>
-    <a href="#" @click.ctrl.prevent="showCtrlMessage">Click me</a>
-    <p>{{ ctrlMessage }}</p>
-
-    <h1>Task 3</h1>
-    <a href="#" @mousedown.left.prevent="setMouseText('left')" 
-               @mousedown.right.prevent="setMouseText('right')" 
-               @mousedown.middle.prevent="setMouseText('middle')">Click me</a>
-    <p>{{ mouseText }}</p>
+    <input v-model="newItem2" />
+    <button @click="addItemToStart">Add</button>
+    <ul>
+      <li v-for="(item, index) in items2" :key="index">{{ item }}</li>
+    </ul>
   </div>
 </template>
 
@@ -20,22 +20,24 @@
 export default {
   data() {
     return {
-      inputText: "",
-      displayedText: "",
-      ctrlMessage: "",
-      mouseText: ""
+      newItem: "",
+      items: ["a", "b", "c", "d", "e"],
+      newItem2: "",
+      items2: ["a", "b", "c", "d", "e"]
     };
   },
   methods: {
-    submitText() {
-      this.displayedText = this.inputText;
-      this.inputText = "";
+    addItem() {
+      if (this.newItem.trim()) {
+        this.items.push(this.newItem);
+        this.newItem = "";
+      }
     },
-    showCtrlMessage() {
-      this.ctrlMessage = "Ctrl key was pressed!";
-    },
-    setMouseText(text) {
-      this.mouseText = text;
+    addItemToStart() {
+      if (this.newItem2.trim()) {
+        this.items2.unshift(this.newItem2);
+        this.newItem2 = "";
+      }
     }
   }
 };
