@@ -1,12 +1,18 @@
 <template>
   <div>
     <h1>Task 1</h1>
-    <input type="text" :disabled="isDisabled" />
-    <button @click="toggleInput">{{ isDisabled ? "Unlock" : "Lock" }}</button>
+    <input type="text" v-model="inputText" @keyup.enter="submitText" />
+    <p>{{ displayedText }}</p>
 
     <h1>Task 2</h1>
-    <input type="checkbox" v-model="isChecked" />
-    <input type="text" :disabled="!isChecked" />
+    <a href="#" @click.ctrl.prevent="showCtrlMessage">Click me</a>
+    <p>{{ ctrlMessage }}</p>
+
+    <h1>Task 3</h1>
+    <a href="#" @mousedown.left.prevent="setMouseText('left')" 
+               @mousedown.right.prevent="setMouseText('right')" 
+               @mousedown.middle.prevent="setMouseText('middle')">Click me</a>
+    <p>{{ mouseText }}</p>
   </div>
 </template>
 
@@ -14,13 +20,22 @@
 export default {
   data() {
     return {
-      isDisabled: true,
-      isChecked: false
+      inputText: "",
+      displayedText: "",
+      ctrlMessage: "",
+      mouseText: ""
     };
   },
   methods: {
-    toggleInput() {
-      this.isDisabled = !this.isDisabled;
+    submitText() {
+      this.displayedText = this.inputText;
+      this.inputText = "";
+    },
+    showCtrlMessage() {
+      this.ctrlMessage = "Ctrl key was pressed!";
+    },
+    setMouseText(text) {
+      this.mouseText = text;
     }
   }
 };
