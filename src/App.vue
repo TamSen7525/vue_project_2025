@@ -5,17 +5,28 @@
       <thead>
         <tr>
           <th>Name</th>
-          <th>Salary</th>
-          <th>Age</th>
+          <th>Surname</th>
           <th>Actions</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="user in users" :key="user.id">
-          <td>{{ user.name }}</td>
-          <td>{{ user.salary }}</td>
-          <td>{{ user.age }}</td>
-          <td><a href="#" @click="removeItem(user.id)">Delete</a></td>
+          <td>
+            <template v-if="!user.isEdit">{{ user.name }}</template>
+            <template v-else><input v-model="user.name" /></template>
+          </td>
+          <td>
+            <template v-if="!user.isEdit">{{ user.surn }}</template>
+            <template v-else><input v-model="user.surn" /></template>
+          </td>
+          <td>
+            <template v-if="!user.isEdit">
+              <button @click="edit(user)">Edit</button>
+            </template>
+            <template v-else>
+              <button @click="save(user)">Save</button>
+            </template>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -30,27 +41,30 @@ export default {
         {
           id: 1,
           name: "name1",
-          salary: 100,
-          age: 30
+          surn: "surn1",
+          isEdit: false
         },
         {
           id: 2,
           name: "name2",
-          salary: 200,
-          age: 40
+          surn: "surn2",
+          isEdit: false
         },
         {
           id: 3,
           name: "name3",
-          salary: 300,
-          age: 50
+          surn: "surn3",
+          isEdit: false
         }
       ]
     };
   },
   methods: {
-    removeItem(id) {
-      this.users = this.users.filter(user => user.id !== id);
+    edit(user) {
+      user.isEdit = true;
+    },
+    save(user) {
+      user.isEdit = false;
     }
   }
 };
