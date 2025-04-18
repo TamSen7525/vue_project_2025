@@ -6,7 +6,7 @@
         :id="user.id"
         :name="user.name"
         :surn="user.surn"
-        @remove="remove(user.id)"
+        @change="change"
       />
     </div>
   </template>
@@ -25,8 +25,14 @@
       };
     },
     methods: {
-      remove(id) {
-        this.users = this.users.filter(user => user.id !== id);
+      change(id, name, surn) {
+        this.users = this.users.map((user) => {
+          if (user.id === id) {
+            user.name = name;
+            user.surn = surn;
+          }
+          return user;
+        });
       },
     },
     components: {

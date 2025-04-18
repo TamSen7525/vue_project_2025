@@ -1,7 +1,14 @@
 <template>
     <div>
-      <p>{{ name }} {{ surn }}</p>
-      <button @click="$emit('remove', id)">Remove</button>
+      <template v-if="!isEdit">
+        <p>{{ name }} {{ surn }}</p>
+        <button @click="edit">Edit</button>
+      </template>
+      <template v-else>
+        <input v-model="newName" />
+        <input v-model="newSurn" />
+        <button @click="save">Save</button>
+      </template>
     </div>
   </template>
   
@@ -12,7 +19,23 @@
       name: String,
       surn: String,
     },
-    emits: ['remove'],
+    emits: ['change'],
+    data() {
+      return {
+        isEdit: false,
+        newName: this.name,
+        newSurn: this.surn,
+      };
+    },
+    methods: {
+      edit() {
+        this.isEdit = true;
+      },
+      save() {
+        this.isEdit = false;
+        this.$emit('change', this.id, this.newName, this.newSurn);
+      },
+    },
   };
   </script>
   
