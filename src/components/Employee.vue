@@ -1,17 +1,21 @@
 <template>
     <div>
-      <p>Name: {{ name }}</p>
-      <p>Salary: {{ salary }}</p>
-      <p>Age: {{ age }}</p>
+      <button @click="sendName">Send Name</button>
+      <button @click="sendDetails">Send Name and Salary</button>
     </div>
   </template>
   
   <script>
   export default {
-    props: {
-      name: String,
-      salary: Number,
-      age: Number
+    props: ['name', 'salary'],
+    emits: ['sendName', 'sendDetails'],
+    methods: {
+      sendName() {
+        this.$emit('sendName', this.name);
+      },
+      sendDetails() {
+        this.$emit('sendDetails', this.name, this.salary);
+      }
     }
   };
   </script>
