@@ -1,14 +1,14 @@
 <template>
     <div>
       <p>Name: {{ name }}</p>
-      <p>Surname: {{ surn }}</p>
+      <p>Salary: {{ salary }}</p>
       <p>Age: {{ age }}</p>
     </div>
   </template>
   
   <script>
   export default {
-    props: ['name', 'surn', 'age']
+    props: ['name', 'salary', 'age']
   };
   </script>
   
