@@ -1,12 +1,18 @@
 <template>
-    <button @click="$emit('show')">
-      Click Me
-    </button>
+    <div>
+      <p>{{ name }} {{ surn }}</p>
+      <button @click="$emit('remove', id)">Remove</button>
+    </div>
   </template>
   
   <script>
   export default {
-    emits: ['show'],
+    props: {
+      id: Number,
+      name: String,
+      surn: String,
+    },
+    emits: ['remove'],
   };
   </script>
   
