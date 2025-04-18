@@ -1,15 +1,15 @@
 <template>
   <div>
-    <Employee name="John" surn="Doe" age="30" />
+    <User :arg="[1, 2, 3, 4, 5]" />
   </div>
 </template>
 
 <script>
-import Employee from './components/Employee.vue'
+import User from './components/User.vue'
 
 export default {
   components: {
-    Employee
+    User
   }
 };
 </script>
