@@ -1,22 +1,12 @@
 <template>
-    <div>
-      <button @click="sendName">Send Name</button>
-      <button @click="sendDetails">Send Name and Salary</button>
-    </div>
+    <button @click="$emit('show')">
+      Click Me
+    </button>
   </template>
   
   <script>
   export default {
-    props: ['name', 'salary'],
-    emits: ['sendName', 'sendDetails'],
-    methods: {
-      sendName() {
-        this.$emit('sendName', this.name);
-      },
-      sendDetails() {
-        this.$emit('sendDetails', this.name, this.salary);
-      }
-    }
+    emits: ['show'],
   };
   </script>
   

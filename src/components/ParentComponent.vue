@@ -1,24 +1,17 @@
+
 <template>
     <div>
-      <Employee 
-        :name="'John'" 
-        :salary="1000" 
-        @sendName="func"
-        @sendDetails="funcWithSalary" 
-      />
+      <Employee @show="handleClick" />
     </div>
   </template>
   
   <script>
-  import Employee from './components/Employee.vue'
+  import Employee from './components/Employee.vue';
   
   export default {
     methods: {
-      func(name) {
-        console.log(name);
-      },
-      funcWithSalary(name, salary) {
-        console.log(name, salary);
+      handleClick() {
+        console.log('Button was clicked!');
       }
     },
     components: {
