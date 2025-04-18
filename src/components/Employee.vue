@@ -1,18 +1,14 @@
-<!-- Employee.vue -->
 <template>
     <div>
-      <p>{{ name }} - {{ position }}</p>
+      <p>Name: {{ name }}</p>
+      <p>Surname: {{ surn }}</p>
+      <p>Age: {{ age }}</p>
     </div>
   </template>
   
   <script>
   export default {
-    data() {
-      return {
-        name: "John Doe",
-        position: "Software Developer"
-      };
-    }
+    props: ['name', 'surn', 'age']
   };
   </script>
   

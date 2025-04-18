@@ -1,7 +1,6 @@
-<!-- App.vue (main component) -->
 <template>
   <div>
-    <Employee />
+    <Employee name="John" surn="Doe" age="30" />
   </div>
 </template>
 
